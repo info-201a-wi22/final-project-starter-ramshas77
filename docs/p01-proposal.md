@@ -74,7 +74,7 @@ A certain limitation that would need to be discussed would be that we wouldn't b
 
 ##Acknowledgements
 We want to thank Min Kim, our T.A for helping us get familiar with collaboratively using github.
-We also want to thank Reddit founders for creating the platform, and Reddit users for being so active in the creation of the data. |
+We also want to thank Reddit founders for creating the platform, and Reddit users for being so active in the creation of the data.
 
 ## References
 
@@ -84,4 +84,4 @@ We also want to thank Reddit founders for creating the platform, and Reddit user
 ## Appendix A:
 
 **Questions**
-1. If we feel like we've taken on a bigger workload than we can handle (particularly with the research questions) are we allowed to drop or change some of the research questions? or is this project proposal set in stone?
+1. If we start to feel like we've taken on a bigger workload than we can handle (particularly with the research questions) are we allowed to drop or change some of the research questions? Or is this project proposal set in stone?
