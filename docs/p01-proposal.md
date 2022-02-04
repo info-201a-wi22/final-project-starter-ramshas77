@@ -26,7 +26,7 @@
 
 **Indirect Stakeholders** people with ADHD who need support, medication, mental health care, or any combination of the 3.
 
-**Benefits and Harms** the mix of fact and opinion, no judgement of honestly or bias. One major benefit would be categorizing information to develop several concepts of the data - creating the possibility for looking at the data in several ways and coming up with solutions for it. It provides representation, and can provide the direct stakeholders information about ADHD, with a reasonable expectation of confidentiality.
+**Benefits and Harms** One harm could be that this data displays a mix of fact and opinion, and there is no judgement of honesty or bias. One major benefit would be that with the right coding, someone can use this data to categorize information to derive several useful concepts from the data. Examining the data in different ways like this could possibly lead to someone coming up with solutions for the problems experienced by the ADHD community. It provides representation, and can provide the direct stakeholders information about ADHD, with a reasonable expectation of user-to-stakeholder confidentiality.
 
 ## 3.0 Research questions
 
@@ -79,7 +79,7 @@ We also want to thank Reddit founders for creating the platform, and Reddit user
 ## References
 
  **(1)** “Reddit User Agreement.” Reddit User Agreement, 2021, https://www.redditinc.com/policies/user-agreement-september-12-2021#:~:text=No%20one%20under%2013%20is,when%20you%20access%20the%20Services
- **(2)** "JerseyNeo". “Reddit ADHD Dataset.” Kaggle, 13 May 2021, https://www.kaggle.com/jerseyneo/reddit-adhd-dataset. 
+ **(2)** "JerseyNeo". “Reddit ADHD Dataset.” Kaggle, 13 May 2021, https://www.kaggle.com/jerseyneo/reddit-adhd-dataset.
 
 ## Appendix A:
 
