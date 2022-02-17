@@ -4,6 +4,7 @@
 
 # Session Data files
 .RData
+data/ADHD.csv
 
 # User-specific files
 .Ruserdata
