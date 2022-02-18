@@ -1,11 +1,11 @@
 # This is going to be the PO2 aggregate table.  
 
-adhd_data <- read.csv("../data/ADHD-comment.csv")
+adhd_data <- read.csv("../ADHD-comment.csv")
 library(stringr)
 library(dplyr)
 
 test_values <- sample_n(adhd_data, 10000)
-
+write.csv(test_values,"../data/testValues.csv")
 word_detect <- function(word) {
   a <- sum(str_detect(adhd_data$body, word))
   return(a)

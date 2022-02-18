@@ -87,11 +87,12 @@ Our data includes four different datasets about ADHD posts on Reddit. The main d
 ## Statistic 1:
 What is the title of the post with the most comments and how many comments does it have?
 ```{r} 
-source("chart1")
+source("../source/chart1.R")
 max_comments <- max(adhd_data$num_comments, na.rm = TRUE)
 ``` 
 1505919691 comments
 ```{r} 
+source("../source/chart1.R")
 max_titles <- adhd_data[adhd_data$num_comments == max_comments, "title"]
 ``` 
 "/sigh"
@@ -100,6 +101,7 @@ max_titles <- adhd_data[adhd_data$num_comments == max_comments, "title"]
 
 How many times is ADHD mentioned in conjunction with the word "depression?"
 ```{r}
+source("../source/Table.R")
 word_detect <- function(word) {
   a <- sum(str_detect(adhd_data$body, word))
   return(a)
@@ -111,6 +113,7 @@ depression is mentioned 79340 times.
 ##  Statistic 3:
 How many times is ADHD mentioned in conjunction with the word "OCD?"
 ```{r}
+source("../source/Table.R")
 word_detect <- function(word) {
   a <- sum(str_detect(adhd_data$body, word))
   return(a)
@@ -120,4 +123,40 @@ ocd_occurrence <- word_detect("OCD")
 ``` 
 ocd is mentioned 11832 times. 
 
+## Statistic 4: 
+How prevalent is the term 'medication' used across the data set?
+```{r}
+source("../source/Group_Chart_AG.R")
+find_term <- sample_data %>% 
+  filter(str_detect(.$title, "medication"))
 
+var1 <- nrow(find_term)
+```
+
+The term medication is mentioned 430 times
+
+## Statistic 5: 
+How often does the term 'guidance' come up in relation to ADHD?
+```{r}
+source("../source/Group_Chart_AG.R")
+find_term <- sample_data %>% 
+  filter(str_detect(.$title, "guidance"))
+
+var1 <- nrow(find_term)
+```
+The term 'guidance' comes up 3 times in all of the data set
+
+# Table
+```{r}
+source("../source/Table.R")
+table3 <- test_values %>% group_by(score) %>% summarize(recent_post_created_on = max(created_datetime))
+```
+
+# Chart 1
+```{r}
+source("../source/Chart1.R")
+```
+
+# Chart 2
+```{r}
+source("../source/Group_Chart_AG.R")
