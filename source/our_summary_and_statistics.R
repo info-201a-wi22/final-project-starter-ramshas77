@@ -39,9 +39,18 @@ ocd_occurrence <- word_detect("OCD")
 
 
 # Statistic 4:
+#How prevalent is the term 'medication' used across the data set?
+find_term <- sample_data %>% 
+  filter(str_detect(.$title, "medication"))
 
+var1 <- nrow(find_term)
 
+#The term medication is mentioned 430 times
 
 # Statistic 5: 
+#How often does the term 'guidance' come up in relation to ADHD?
+find_term <- sample_data %>% 
+  filter(str_detect(.$title, "guidance"))
 
-
+var1 <- nrow(find_term)
+# The term 'guidance' comes up 3 times in all of the data set
