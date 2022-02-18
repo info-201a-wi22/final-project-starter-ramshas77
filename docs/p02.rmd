@@ -1,5 +1,9 @@
-# This is going to be our rmd file. 
-
+---
+title: "Analyzing Online ADHD COmmunities"
+author: "Naomi Moss, Sahil Bains, Ramsha Sheikh"
+date: "2/18/2022"
+output: html_document
+---
 
 ##Audience
 Anyone who wants to support someone with ADHD, including but not limited to medical providers, academics, and friends/loved ones. 

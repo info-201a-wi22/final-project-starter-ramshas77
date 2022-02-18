@@ -5,6 +5,9 @@ date: "2/18/2022"
 output: html_document
 ---
 
+### We have decided to name our index file for the second deliverable "p02.rmd." Please read that instead.
+
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
