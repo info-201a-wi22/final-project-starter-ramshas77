@@ -14,10 +14,27 @@ max_titles <- adhd_data[adhd_data$num_comments == max_comments, "title"]
 # "/sigh"
 
 # Statistic 2:
+# How many times is ADHD mentioned in conjunction with the word "depression?"
 
+word_detect <- function(word) {
+  a <- sum(str_detect(adhd_data$body, word))
+  return(a)
+} 
 
+depression_occurrence <- word_detect("depression")
+
+#depression is mentioned 79340 times. 
 
 # Statistic 3:
+# How many times is ADHD mentioned in conjunction with the word "OCD?"
+
+word_detect <- function(word) {
+  a <- sum(str_detect(adhd_data$body, word))
+  return(a)
+} 
+
+ocd_occurrence <- word_detect("OCD")
+#ocd is mentioned 11832 times. 
 
 
 
