@@ -88,17 +88,13 @@ What is the title of the post with the most comments and how many comments does 
 ```{r} 
 source("../source/chart1.R")
 max_comments <- max(adhd_data$num_comments, na.rm = TRUE)
-``` 
-1505919691 comments
-```{r} 
-source("../source/chart1.R")
 max_titles <- adhd_data[adhd_data$num_comments == max_comments, "title"]
 ``` 
-"/sigh"
+1505919691 comments, titled "/sigh"
 
-## Statistic 2:
+## Statistics 2 and 3:
 
-How many times is ADHD mentioned in conjunction with the word "depression?"
+How many times is ADHD mentioned in conjunction with the word "depression" and "OCD?"
 ```{r}
 source("../source/Table.R")
 word_detect <- function(word) {
@@ -106,21 +102,10 @@ word_detect <- function(word) {
   return(a)
 } 
 depression_occurrence <- word_detect("depression")
-```
-depression is mentioned 79340 times. 
-
-##  Statistic 3:
-How many times is ADHD mentioned in conjunction with the word "OCD?"
-```{r}
-source("../source/Table.R")
-word_detect <- function(word) {
-  a <- sum(str_detect(adhd_data$body, word))
-  return(a)
-} 
-
 ocd_occurrence <- word_detect("OCD")
-``` 
-ocd is mentioned 11832 times. 
+```
+print(depression is mentioned {depression_occurrence} times.) 
+print(ocd is mentioned {ocd_occurrence} times. )
 
 ## Statistic 4: 
 How prevalent is the term 'medication' used across the data set?

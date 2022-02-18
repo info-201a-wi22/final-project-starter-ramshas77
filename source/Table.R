@@ -1,6 +1,6 @@
 # This is going to be the PO2 aggregate table.  
 
-adhd_data <- read.csv("../ADHD-comment.csv")
+adhd_data <- read.csv("../data/ADHD-comment.csv")
 library(stringr)
 library(dplyr)
 
@@ -11,7 +11,8 @@ word_detect <- function(word) {
   return(a)
 } 
 
-ocd <- word_detect("OCD")
+depression_occurrence <- word_detect("depression")
+
 
 
 table3 <- test_values %>% group_by(score) %>% summarize(recent_post_created_on = max(created_datetime))

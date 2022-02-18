@@ -42,3 +42,6 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
+/data/ADHd-Comment.csv
+/data/ADHd.csv
+/data/example.csv

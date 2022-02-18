@@ -1,6 +1,7 @@
 # This is the second chart for our data
 
-setwd("~/INFO-201code/group_ag_project/final-project-starter-ramshas77/data")
+##setwd("~/INFO-201code/group_ag_project/final-project-starter-ramshas77/data")
+setwd("../data")
 
 
 f <- file.choose("ADHD.csv")

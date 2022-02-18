@@ -5,7 +5,7 @@ library(stringr)
 library(ggplot2)
 library(plotly)
 
-adhd_data <- read.csv("C:/Users/platy/Documents/Info201_code/ADHD.csv")
+adhd_data <- read.csv("../data/ADHD.csv")
 
 max_comments <- max(adhd_data$num_comments, na.rm = TRUE)
 
