@@ -1,0 +1,33 @@
+# This is the second chart for our data
+
+##setwd("~/INFO-201code/group_ag_project/final-project-starter-ramshas77/data")
+setwd("../data")
+
+
+f <- file.choose("ADHD.csv")
+
+adhd_data <- read.csv(f)
+
+library(dplyr)
+library(stringr)
+library(data.table)
+library(ggplot2)
+
+sample_data <- sample_n(adhd_data, 10000)
+
+find_term <- sample_data %>% 
+  filter(str_detect(.$title, "medication"))
+
+variable <- nrow(find_term)
+
+terms <- c("doctor", "parent", "teacher", "help", "desperate")
+frequency <- c(143, 109, 13, 440, 9)
+
+term_freq <- data.frame(terms, frequency)
+
+terms_graph <- ggplot(term_freq, aes(terms, frequency))
+
+terms_graph + geom_point(position = "stack", stat = "identity", shape = 18, color = "blue") + 
+  ggtitle("Frequency of Terms" , subtitle = "from the first 10000 values of the data set") +
+  geom_point(color = "red") 
+
