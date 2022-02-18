@@ -48,5 +48,5 @@ frequency <- c(20,
 
 term_frequencies <- data.frame(term, frequency) 
 
-ggplot(data = term_frequencies) +
+terms_chart <- ggplot(data = term_frequencies) +
   geom_col( mapping = aes(x = term, y = frequency, fill = term))
