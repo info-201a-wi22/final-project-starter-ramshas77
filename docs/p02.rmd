@@ -1,5 +1,5 @@
 ---
-title: "ADHD and Reddit - a deeper look"
+title: "ADHD Analyzing Online ADHD communities"
 output: html_document
 ---
 
@@ -103,8 +103,9 @@ What is the title of the post with the most comments and how many comments does 
 source("../source/our_summary_and_statistics.R")
 max_comments <- max(adhd_data$num_comments, na.rm = TRUE)
 max_titles <- adhd_data[adhd_data$num_comments == max_comments, "title"]
+paste(max_comments, "comments")
 ``` 
-1505919691 comments, titled "/sigh"
+titled "/sigh"
 
 ## Statistics 2 and 3:
 
@@ -141,16 +142,22 @@ paste("The term guidance is mentioned ", guidance_occurrence, "times")
 ```{r}
 adhd_data <- read.csv("../data/ADHD.csv")
 source("../source/Table.R")
-kable(table3) %>% 
+
+table3 <- display_table(adhd_data) %>% kable() %>%
   kable_styling("striped", full_width = FALSE)
+table3
 ```
 
+This table categorizes a sample of 10000 posts by "score" and returns the most recent date that a post with that certain score was made. A "score" is a measure of post popularity - a higher score means that more people like it/agree with it, and a lower score means that more people dislike it/disagree with it. By returning recent dates in a table like this, we can get some insight into trends in post popularity - a recent hated post was made in 2017, and the most neutral posts were made in early 2021, some highly popular posts were made in 2017 and 2019, and the most popular post of this sample was made in early 2021. Categorizing scores and years could lead us to a few different insights - It could show the general attitudes of this online community throughout the years based on what posts they make and how positively or negatively they rate others' posts. One could then use either the scores or the assessment of attitudes to compare before vs during the pandemic (or other major lifestyle-changing events). Or these trends could also be lined up against certain topics or certain posts to judge their popularity/importance in that way. A deeper dive into the body of the posts in this sample, as well as several different samples may be done for more insight. 
+
 # Chart 1
-```{r}
+```{r echo = TRUE}
 source("../source/Chart1.R")
 chart1 <- display_chart1(adhd_data)
 chart1
 ```
+
+The purpose of this chart is to show the differences between various terms that are discussed accross the entire dataset. This gives insight into topics that indicate the needs of people with ADHD. "Help" is the most common word, and what one can see from this is that a disorder like ADHD must be hard to manage and most people turn to this forum for help, or share their experiences with getting help, or generally discussing anything to do with "help." Following are terms such as "focus", "medication", and "struggle", which lines up with our first observation because these could be the things people with ADHD are looking for help for. A further search into the data may be required to get a better understanding of what context these words appear in. 
 
 # Chart 2
 ```{r, ECHO = TRUE}
@@ -158,3 +165,5 @@ source("../source/Group_Chart_AG.R")
 chart2 <- display_chart2(adhd_data)
 chart2
 ```
+
+This chart is a chart that only takes a sample of 10000 values, and does another term search with different terms. The most common word again was "help," but the other terms searched have a different focus - people in the individuals' lives. with "doctor" and "parent" being more common than "teacher," this may be the start of an indication that doctors and parents play a big role in how their ADHD affects them, and they are turning to online communities to discuss that. A further search into the data may be required to get a better understanding of what context these words appear in. In addition, different sample sizes and different terms of key people might be needed to get a bigger picture of the way people with certain roles are being discussed in this online ADHD community. 

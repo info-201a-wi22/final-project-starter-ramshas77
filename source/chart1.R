@@ -6,24 +6,24 @@ library(ggplot2)
 library(plotly)
 
 ## To visualize the graph, load the data
-# adhd_data <- read.csv("../data/ADHD.csv")
+adhd_data <- read.csv("../data/ADHD.csv")
 
 
 ## If these codes are for the graph, make sure they're inside of the function
 # max_comments <- max(adhd_data$num_comments, na.rm = TRUE)
 # 
-# top_101 <- adhd_data %>%
-#   select(title, selftext, num_comments) %>%
-#   filter(num_comments > 421)
-# 
-# find_word <- top_101 %>%
-#   filter(str_detect(.$selftext, "today"))
-# 
-# variable <- nrow(find_word)
-# 
+
+
 
 ## this is the chart function. Everything should be within this function. 
 display_chart1 <- function(adhd_data) {
+  top_101 <- adhd_data %>%
+    select(title, selftext, num_comments) %>%
+    filter(num_comments > 421)
+  
+  find_word <- top_101 %>%
+    filter(str_detect(.$selftext, "today"))
+  variable <- nrow(find_word)
   term <- c('help', 
             'medication', 
             'focus', 
@@ -55,7 +55,7 @@ display_chart1 <- function(adhd_data) {
   term_frequencies <- data.frame(term, frequency) 
   
   terms_chart <- ggplot(data = term_frequencies) +
-    geom_col( mapping = aes(x = term, y = frequency, fill = term))
+    geom_col( mapping = aes(x = term, y = frequency))
   
   return(terms_chart)
 }
