@@ -1,12 +1,9 @@
 # This is the second chart for our data
 
-##setwd("~/INFO-201code/group_ag_project/final-project-starter-ramshas77/data")
-setwd("../data")
+#setwd("~/INFO-201code/group_ag_project/final-project-starter-ramshas77/data")
 
 
-f <- file.choose("ADHD.csv")
-
-adhd_data <- read.csv(f)
+adhd_data <- read.csv("../data/ADHD.csv")
 
 library(dplyr)
 library(stringr)

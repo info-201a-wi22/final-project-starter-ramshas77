@@ -1,7 +1,17 @@
-# This is going to be our rmd file. 
+---
+title: "ADHD and Reddit - a deeper look"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(kableExtra)
+```
+
 
 
 ##Audience
+
 Anyone who wants to support someone with ADHD, including but not limited to medical providers, academics, and friends/loved ones. 
 
 ##Report elements
@@ -41,13 +51,13 @@ This question is motivated by our interest in whether or not people affected by 
 This question is motivated by our interest in how interconnected ADHD is with other mental illnesses or mental health issues. This is important because understanding that correlation may allow people to better treat and diagnose ADHD in the future. We will address this question by detecting specific words and phrases relating to mental illnesses and mental wellbeing to see how often they are mentioned.
 
 
-## 4.0 The Dataset
+### 4.0 The Dataset
 
-### Size and complexity
+#### Size and complexity
 
 Our dataset consists of four data files. The first file contains all questions or prompts posted to the Reddit thread “r/ADHD.” This dataset has 8 columns and 336,191 rows. The columns list the title, main text, score, post ID, URL, number of comments, UTC of the post, and the original posting date and time of each post. The second file contains all the comments in the r/ADHD thread and has 5 columns and 1,048,576 rows. The five columns list the text body, comment ID, score, created UTC, and original date and time of posting. The third dataset contains every question or prompt posted to the Reddit thread “r/adhdwomen,” and has 44,385 rows, each with 8 columns: the title, body of text, score, post ID, URL, number of comments, created UTC, and original date and time of the post. Lastly, the fourth file contains all the comments on the posts in r/adhdwomen. This file has recorded 202,659 total comments and contains 5 columns, the body, ID, score, created UTC, and original date and time of the comment.
 
-### Data provenance
+#### Data provenance
 
 Our dataset represents Reddit users (presumably above the age of 13(1)) who have posted or commented on posts within the r/ADHD and r/adhdwomen threads. Most of the posts and comments reflect the opinions and experiences of those who are posting or someone directly related to them, and so the posts offer a representation of the lives and minds of those who have contributed to these subreddit threads. These people are all at various stages of navigating their ADHD - including but not limited to professionally diagnosed, in the diagnosis process, experiencing symptoms but not seeking a diagnosis, self diagnosis, or supporting a loved one. Each observation in our dataset represents a single post to either the r/ADHD or r/adhdwomen Reddit threads.
 
@@ -59,11 +69,11 @@ The data appears to be held within the website Kaggle, which appears to be a tru
 
 We obtained this data by searching for ADHD-related datasets via Google and exploring the options that were available. The datasets are posted publicly, so we were able to access them easily through the internet.
 
-## 5.0 Expected Implications
+### 5.0 Expected Implications
 
 Some expected implications for technologists, designers, and policymakers would be analyzing the data sets and assimilate groupings - this could open up the window of opportunity for technologists to create powerful data visualizations that can be interpreted by the majority population and could lead to many changes for the good in society. Taking a closer look at the datasets could also greatly influence policymakers in having a greater scope to the statistical realities when it comes to a certain subject, and then applying those decisions in direct reflection of those statistics. Some factors about how designers could be affected would be that could present the data in different visualizations that could go to exemplify the data that can be understand by more people.
 
-## 6.0 Limitations
+### 6.0 Limitations
 
 A certain limitation that would need to be discussed would be that we wouldn't be able to cover a great amount of detail in relation to how someone who might have been studying the psychology behind ADHD for a great period of time, which goes to portray a sort of one-sided perspective on our part. Another limitation that our project may carry is that a set of data or two may not carry accurate data, which could skew the precision of what our visualizations look like. Another significant limitation in our project could be that we miss providing the central solution to the problem that we're trying to solve, which could mean that while we bring up datasets that we believe present a problem in society, we don't necessarily give solutions through our visualizations."
 
@@ -79,7 +89,7 @@ We also want to thank Reddit founders for creating the platform, and Reddit user
  
 ## Summary 
 
-Our data includes four different datasets about ADHD posts on Reddit. The main dataset that we will be using is called "ADHD" and stores all of the posts made on the Reddit thread "ADHD." This dataframe has 336066 rows and 8 columns. One column in this dataframe stores the number of comments each post in "ADHD" has. The post with the most comments -titled "/sigh"- has over 1.5 billion comments. This plays a part in answering our research questions because it tells us that a very highly-discussed post is one expressing negative emotion. 
+Our data includes four different datasets about ADHD posts on Reddit. The main dataset that we will be using is called "ADHD" and stores all of the posts made on the Reddit thread "ADHD." This dataframe has 336066 rows and 8 columns. One column in this dataframe stores the number of comments each post in "ADHD" has. The post with the most comments -titled "/sigh"- has over 1.5 billion comments. This plays a part in answering our research questions because it tells us that a very highly-discussed post is one expressing negative emotion. The word "depression" is mentioned significantly more than "OCD," which is just one example of how one mental illness that co-occurs with ADHD might be more prevalent or concerning in this community. We also looked at how "medication" might be occurring far more often than the word "guidance." Even though "medication" is a more specific term, it's discussed more often than the general term "guidance," which could indicate specific medical needs are more important than general guidance. 
 
 # Our five statistics!
 
@@ -94,53 +104,51 @@ max_titles <- adhd_data[adhd_data$num_comments == max_comments, "title"]
 
 ## Statistics 2 and 3:
 
-How many times is ADHD mentioned in conjunction with the word "depression" and "OCD?"
+How many times does this community mention other mental illnesses such as "depression" and "OCD?"
 ```{r}
 source("../source/Table.R")
-word_detect <- function(word) {
-  a <- sum(str_detect(adhd_data$body, word))
-  return(a)
-} 
 depression_occurrence <- word_detect("depression")
+paste("depression is mentioned", depression_occurrence," times.") 
 ocd_occurrence <- word_detect("OCD")
+paste("OCD is mentioned", ocd_occurrence," times.") 
 ```
-print(depression is mentioned {depression_occurrence} times.) 
-print(ocd is mentioned {ocd_occurrence} times. )
 
-## Statistic 4: 
-How prevalent is the term 'medication' used across the data set?
+
+## Statistics 4 and 5: 
+How prevalent is the term 'medication' used across a sample within this dataset in comparison to the term 'guidance?'
 ```{r}
 source("../source/Group_Chart_AG.R")
 find_term <- sample_data %>% 
   filter(str_detect(.$title, "medication"))
 
-var1 <- nrow(find_term)
-```
+medication_occurrence <- nrow(find_term)
 
-The term medication is mentioned 430 times
-
-## Statistic 5: 
-How often does the term 'guidance' come up in relation to ADHD?
-```{r}
-source("../source/Group_Chart_AG.R")
 find_term <- sample_data %>% 
   filter(str_detect(.$title, "guidance"))
 
-var1 <- nrow(find_term)
+guidance_occurrence <- nrow(find_term)
+
+paste("The term medication is mentioned ", medication_occurrence, "times")
+paste("The term guidance is mentioned ", guidance_occurrence, "times")
+
 ```
-The term 'guidance' comes up 3 times in all of the data set
 
 # Table
 ```{r}
 source("../source/Table.R")
-table3 <- test_values %>% group_by(score) %>% summarize(recent_post_created_on = max(created_datetime))
+kable(table3) %>% 
+  kable_styling("striped", full_width = FALSE)
 ```
 
 # Chart 1
 ```{r}
 source("../source/Chart1.R")
+print(terms_chart)
 ```
 
 # Chart 2
 ```{r}
 source("../source/Group_Chart_AG.R")
+print(terms_graph)
+
+```
