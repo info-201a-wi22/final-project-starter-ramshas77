@@ -8,6 +8,12 @@
 
 # Statistic 1:
 # What is the title of the post with the most comments and how many comments does it have?
+library(dplyr)
+library(stringr)
+library(ggplot2)
+library(plotly)
+
+adhd_data <- read.csv("../data/ADHD.csv")
 max_comments <- max(adhd_data$num_comments, na.rm = TRUE)
 # 1505919691 comments
 max_titles <- adhd_data[adhd_data$num_comments == max_comments, "title"]

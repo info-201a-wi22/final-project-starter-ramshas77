@@ -8,6 +8,12 @@
 
 # Statistic 1:
 # What is the title of the post with the most comments and how many comments does it have?
+library(dplyr)
+library(stringr)
+library(ggplot2)
+library(plotly)
+
+adhd_data <- read.csv("../data/ADHD.csv")
 max_comments <- max(adhd_data$num_comments, na.rm = TRUE)
 # 1505919691 comments
 max_titles <- adhd_data[adhd_data$num_comments == max_comments, "title"]
@@ -40,6 +46,7 @@ ocd_occurrence <- word_detect("OCD")
 
 # Statistic 4:
 #How prevalent is the term 'medication' used across the data set?
+sample_data <- sample_n(adhd_data, 10000)
 find_term <- sample_data %>% 
   filter(str_detect(.$title, "medication"))
 

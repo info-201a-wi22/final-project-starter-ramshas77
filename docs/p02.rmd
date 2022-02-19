@@ -6,15 +6,19 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(kableExtra)
+library(dplyr)
+library(stringr)
+library(data.table)
+library(ggplot2)
 ```
 
 
 
-##Audience
+## Audience
 
 Anyone who wants to support someone with ADHD, including but not limited to medical providers, academics, and friends/loved ones. 
 
-##Report elements
+## Report elements
 
 ### 1.0 Introduction
  This question is important because it's important to understand their need for medication, correct diagnoses. To address this concern, we plan to use a data set from Reddit, a site where we can reasonably expect people from this community to be open and honest because there are minimal consequences. Therefore, our analysis is not intended to be a monolith, it is simply to fill in "missing" data about that people may not share with professionals.
@@ -96,7 +100,7 @@ Our data includes four different datasets about ADHD posts on Reddit. The main d
 ## Statistic 1:
 What is the title of the post with the most comments and how many comments does it have?
 ```{r} 
-source("../source/chart1.R")
+source("../source/our_summary_and_statistics.R")
 max_comments <- max(adhd_data$num_comments, na.rm = TRUE)
 max_titles <- adhd_data[adhd_data$num_comments == max_comments, "title"]
 ``` 
@@ -106,7 +110,7 @@ max_titles <- adhd_data[adhd_data$num_comments == max_comments, "title"]
 
 How many times does this community mention other mental illnesses such as "depression" and "OCD?"
 ```{r}
-source("../source/Table.R")
+source("../source/our_summary_and_statistics.R")
 depression_occurrence <- word_detect("depression")
 paste("depression is mentioned", depression_occurrence," times.") 
 ocd_occurrence <- word_detect("OCD")
@@ -117,7 +121,7 @@ paste("OCD is mentioned", ocd_occurrence," times.")
 ## Statistics 4 and 5: 
 How prevalent is the term 'medication' used across a sample within this dataset in comparison to the term 'guidance?'
 ```{r}
-source("../source/Group_Chart_AG.R")
+source("../source/our_summary_and_statistics.R")
 find_term <- sample_data %>% 
   filter(str_detect(.$title, "medication"))
 
@@ -135,6 +139,7 @@ paste("The term guidance is mentioned ", guidance_occurrence, "times")
 
 # Table
 ```{r}
+adhd_data <- read.csv("../data/ADHD.csv")
 source("../source/Table.R")
 kable(table3) %>% 
   kable_styling("striped", full_width = FALSE)
@@ -143,12 +148,13 @@ kable(table3) %>%
 # Chart 1
 ```{r}
 source("../source/Chart1.R")
-print(terms_chart)
+chart1 <- display_chart1(adhd_data)
+chart1
 ```
 
 # Chart 2
-```{r}
+```{r, ECHO = TRUE}
 source("../source/Group_Chart_AG.R")
-print(terms_graph)
-
+chart2 <- display_chart2(adhd_data)
+chart2
 ```

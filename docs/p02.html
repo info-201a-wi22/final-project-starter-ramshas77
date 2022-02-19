@@ -170,9 +170,12 @@ pre code {
 </div>
 
 
-<p>##Audience</p>
+<div id="audience" class="section level2">
+<h2>Audience</h2>
 <p>Anyone who wants to support someone with ADHD, including but not limited to medical providers, academics, and friends/loved ones.</p>
-<p>##Report elements</p>
+</div>
+<div id="report-elements" class="section level2">
+<h2>Report elements</h2>
 <div id="introduction" class="section level3">
 <h3>1.0 Introduction</h3>
 <p>This question is important because it’s important to understand their need for medication, correct diagnoses. To address this concern, we plan to use a data set from Reddit, a site where we can reasonably expect people from this community to be open and honest because there are minimal consequences. Therefore, our analysis is not intended to be a monolith, it is simply to fill in “missing” data about that people may not share with professionals.</p>
@@ -221,6 +224,7 @@ pre code {
 <p>A certain limitation that would need to be discussed would be that we wouldn’t be able to cover a great amount of detail in relation to how someone who might have been studying the psychology behind ADHD for a great period of time, which goes to portray a sort of one-sided perspective on our part. Another limitation that our project may carry is that a set of data or two may not carry accurate data, which could skew the precision of what our visualizations look like. Another significant limitation in our project could be that we miss providing the central solution to the problem that we’re trying to solve, which could mean that while we bring up datasets that we believe present a problem in society, we don’t necessarily give solutions through our visualizations.”</p>
 <p>##Acknowledgements We want to thank Min Kim, our T.A for helping us get familiar with collaboratively using github. We also want to thank Reddit founders for creating the platform, and Reddit users for being so active in the creation of the data.</p>
 </div>
+</div>
 <div id="references" class="section level2">
 <h2>References</h2>
 <p><strong>(1)</strong> “Reddit User Agreement.” Reddit User Agreement, 2021, <a href="https://www.redditinc.com/policies/user-agreement-september-12-2021#" class="uri">https://www.redditinc.com/policies/user-agreement-september-12-2021#</a>:~:text=No%20one%20under%2013%20is,when%20you%20access%20the%20Services <strong>(2)</strong> “JerseyNeo”. “Reddit ADHD Dataset.” Kaggle, 13 May 2021, <a href="https://www.kaggle.com/jerseyneo/reddit-adhd-dataset" class="uri">https://www.kaggle.com/jerseyneo/reddit-adhd-dataset</a>.</p>
@@ -234,7 +238,7 @@ pre code {
 <div id="statistic-1" class="section level2">
 <h2>Statistic 1:</h2>
 <p>What is the title of the post with the most comments and how many comments does it have?</p>
-<pre class="r"><code>source(&quot;../source/chart1.R&quot;)</code></pre>
+<pre class="r"><code>source(&quot;../source/our_summary_and_statistics.R&quot;)</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;dplyr&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:kableExtra&#39;:
@@ -264,24 +268,19 @@ max_titles &lt;- adhd_data[adhd_data$num_comments == max_comments, &quot;title&q
 <div id="statistics-2-and-3" class="section level2">
 <h2>Statistics 2 and 3:</h2>
 <p>How many times does this community mention other mental illnesses such as “depression” and “OCD?”</p>
-<pre class="r"><code>source(&quot;../source/Table.R&quot;)
+<pre class="r"><code>source(&quot;../source/our_summary_and_statistics.R&quot;)
 depression_occurrence &lt;- word_detect(&quot;depression&quot;)
 paste(&quot;depression is mentioned&quot;, depression_occurrence,&quot; times.&quot;) </code></pre>
-<pre><code>## [1] &quot;depression is mentioned 79340  times.&quot;</code></pre>
+<pre><code>## [1] &quot;depression is mentioned 0  times.&quot;</code></pre>
 <pre class="r"><code>ocd_occurrence &lt;- word_detect(&quot;OCD&quot;)
 paste(&quot;OCD is mentioned&quot;, ocd_occurrence,&quot; times.&quot;) </code></pre>
-<pre><code>## [1] &quot;OCD is mentioned 11832  times.&quot;</code></pre>
+<pre><code>## [1] &quot;OCD is mentioned 0  times.&quot;</code></pre>
 </div>
 <div id="statistics-4-and-5" class="section level2">
 <h2>Statistics 4 and 5:</h2>
 <p>How prevalent is the term ‘medication’ used across a sample within this dataset in comparison to the term ‘guidance?’</p>
-<pre class="r"><code>source(&quot;../source/Group_Chart_AG.R&quot;)</code></pre>
-<pre><code>## 
-## Attaching package: &#39;data.table&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:dplyr&#39;:
-## 
-##     between, first, last</code></pre>
-<pre class="r"><code>find_term &lt;- sample_data %&gt;% 
+<pre class="r"><code>source(&quot;../source/our_summary_and_statistics.R&quot;)
+find_term &lt;- sample_data %&gt;% 
   filter(str_detect(.$title, &quot;medication&quot;))
 
 medication_occurrence &lt;- nrow(find_term)
@@ -292,9 +291,9 @@ find_term &lt;- sample_data %&gt;%
 guidance_occurrence &lt;- nrow(find_term)
 
 paste(&quot;The term medication is mentioned &quot;, medication_occurrence, &quot;times&quot;)</code></pre>
-<pre><code>## [1] &quot;The term medication is mentioned  458 times&quot;</code></pre>
+<pre><code>## [1] &quot;The term medication is mentioned  407 times&quot;</code></pre>
 <pre class="r"><code>paste(&quot;The term guidance is mentioned &quot;, guidance_occurrence, &quot;times&quot;)</code></pre>
-<pre><code>## [1] &quot;The term guidance is mentioned  6 times&quot;</code></pre>
+<pre><code>## [1] &quot;The term guidance is mentioned  8 times&quot;</code></pre>
 </div>
 </div>
 <div id="table" class="section level1">
@@ -316,34 +315,34 @@ recent_post_created_on
 <tbody>
 <tr>
 <td style="text-align:right;">
--50
+-15
 </td>
 <td style="text-align:left;">
-2017-02-26 19:37:51
+2018-12-10 15:20:12
 </td>
 </tr>
 <tr>
 <td style="text-align:right;">
--12
+-11
 </td>
 <td style="text-align:left;">
-2013-05-04 16:17:55
+2016-09-04 15:37:25
 </td>
 </tr>
 <tr>
 <td style="text-align:right;">
--8
+-9
 </td>
 <td style="text-align:left;">
-2019-07-12 16:17:23
+2015-03-31 21:10:34
 </td>
 </tr>
 <tr>
 <td style="text-align:right;">
--7
+-6
 </td>
 <td style="text-align:left;">
-2021-04-28 11:11:21
+2018-06-09 10:15:09
 </td>
 </tr>
 <tr>
@@ -351,7 +350,7 @@ recent_post_created_on
 -5
 </td>
 <td style="text-align:left;">
-2017-09-13 06:00:14
+2020-12-21 03:00:35
 </td>
 </tr>
 <tr>
@@ -359,7 +358,7 @@ recent_post_created_on
 -4
 </td>
 <td style="text-align:left;">
-2021-04-23 20:37:34
+2017-02-11 18:05:48
 </td>
 </tr>
 <tr>
@@ -367,7 +366,7 @@ recent_post_created_on
 -3
 </td>
 <td style="text-align:left;">
-2016-12-27 13:44:16
+2018-07-03 23:08:29
 </td>
 </tr>
 <tr>
@@ -375,7 +374,7 @@ recent_post_created_on
 -2
 </td>
 <td style="text-align:left;">
-2021-01-21 19:14:22
+2020-11-25 02:02:03
 </td>
 </tr>
 <tr>
@@ -383,7 +382,7 @@ recent_post_created_on
 -1
 </td>
 <td style="text-align:left;">
-2020-11-16 15:50:24
+2020-05-20 02:57:44
 </td>
 </tr>
 <tr>
@@ -391,7 +390,7 @@ recent_post_created_on
 0
 </td>
 <td style="text-align:left;">
-2021-01-31 17:35:02
+2021-04-25 05:00:37
 </td>
 </tr>
 <tr>
@@ -399,7 +398,7 @@ recent_post_created_on
 1
 </td>
 <td style="text-align:left;">
-2021-05-03 22:24:43
+2021-05-03 21:19:33
 </td>
 </tr>
 <tr>
@@ -407,7 +406,7 @@ recent_post_created_on
 2
 </td>
 <td style="text-align:left;">
-2021-05-03 12:00:13
+2021-05-03 19:15:14
 </td>
 </tr>
 <tr>
@@ -415,7 +414,7 @@ recent_post_created_on
 3
 </td>
 <td style="text-align:left;">
-2021-05-01 13:13:25
+2021-05-02 12:12:53
 </td>
 </tr>
 <tr>
@@ -423,7 +422,7 @@ recent_post_created_on
 4
 </td>
 <td style="text-align:left;">
-2021-04-29 17:03:57
+2021-04-27 11:55:23
 </td>
 </tr>
 <tr>
@@ -431,7 +430,7 @@ recent_post_created_on
 5
 </td>
 <td style="text-align:left;">
-2021-05-03 13:09:58
+2021-04-27 09:26:01
 </td>
 </tr>
 <tr>
@@ -439,7 +438,7 @@ recent_post_created_on
 6
 </td>
 <td style="text-align:left;">
-2021-02-24 15:58:45
+2021-04-20 23:23:36
 </td>
 </tr>
 <tr>
@@ -447,7 +446,7 @@ recent_post_created_on
 7
 </td>
 <td style="text-align:left;">
-2021-03-04 04:57:41
+2021-04-29 12:22:55
 </td>
 </tr>
 <tr>
@@ -455,7 +454,7 @@ recent_post_created_on
 8
 </td>
 <td style="text-align:left;">
-2021-04-24 23:57:07
+2021-03-04 06:06:55
 </td>
 </tr>
 <tr>
@@ -463,7 +462,7 @@ recent_post_created_on
 9
 </td>
 <td style="text-align:left;">
-2021-03-16 16:58:57
+2021-04-29 05:39:52
 </td>
 </tr>
 <tr>
@@ -471,7 +470,7 @@ recent_post_created_on
 10
 </td>
 <td style="text-align:left;">
-2021-01-19 20:01:13
+2021-01-18 19:05:53
 </td>
 </tr>
 <tr>
@@ -479,7 +478,7 @@ recent_post_created_on
 11
 </td>
 <td style="text-align:left;">
-2021-04-23 09:29:31
+2021-01-15 16:34:38
 </td>
 </tr>
 <tr>
@@ -487,7 +486,7 @@ recent_post_created_on
 12
 </td>
 <td style="text-align:left;">
-2021-02-24 18:58:47
+2021-01-10 20:53:20
 </td>
 </tr>
 <tr>
@@ -495,7 +494,7 @@ recent_post_created_on
 13
 </td>
 <td style="text-align:left;">
-2021-01-23 15:27:58
+2021-05-02 13:48:31
 </td>
 </tr>
 <tr>
@@ -503,7 +502,7 @@ recent_post_created_on
 14
 </td>
 <td style="text-align:left;">
-2019-05-20 13:55:06
+2021-04-25 12:41:27
 </td>
 </tr>
 <tr>
@@ -511,7 +510,7 @@ recent_post_created_on
 15
 </td>
 <td style="text-align:left;">
-2021-02-23 13:48:24
+2021-02-11 02:21:42
 </td>
 </tr>
 <tr>
@@ -519,7 +518,7 @@ recent_post_created_on
 16
 </td>
 <td style="text-align:left;">
-2021-01-23 12:54:34
+2021-05-02 14:44:16
 </td>
 </tr>
 <tr>
@@ -527,7 +526,7 @@ recent_post_created_on
 17
 </td>
 <td style="text-align:left;">
-2021-02-14 20:15:49
+2021-04-28 21:37:55
 </td>
 </tr>
 <tr>
@@ -535,7 +534,7 @@ recent_post_created_on
 18
 </td>
 <td style="text-align:left;">
-2020-12-17 15:53:56
+2019-05-06 07:54:49
 </td>
 </tr>
 <tr>
@@ -543,7 +542,7 @@ recent_post_created_on
 19
 </td>
 <td style="text-align:left;">
-2019-06-24 15:34:12
+2021-01-10 22:40:23
 </td>
 </tr>
 <tr>
@@ -551,7 +550,7 @@ recent_post_created_on
 20
 </td>
 <td style="text-align:left;">
-2020-09-17 23:20:56
+2021-03-03 05:29:09
 </td>
 </tr>
 <tr>
@@ -559,7 +558,7 @@ recent_post_created_on
 21
 </td>
 <td style="text-align:left;">
-2020-09-16 19:45:47
+2021-01-17 20:09:23
 </td>
 </tr>
 <tr>
@@ -567,7 +566,7 @@ recent_post_created_on
 22
 </td>
 <td style="text-align:left;">
-2018-09-30 03:14:55
+2021-01-31 11:25:32
 </td>
 </tr>
 <tr>
@@ -575,7 +574,7 @@ recent_post_created_on
 23
 </td>
 <td style="text-align:left;">
-2019-07-05 00:45:18
+2019-07-23 17:20:23
 </td>
 </tr>
 <tr>
@@ -583,7 +582,7 @@ recent_post_created_on
 24
 </td>
 <td style="text-align:left;">
-2018-11-13 03:20:29
+2017-09-22 00:41:00
 </td>
 </tr>
 <tr>
@@ -591,7 +590,7 @@ recent_post_created_on
 25
 </td>
 <td style="text-align:left;">
-2021-04-30 17:38:59
+2020-05-21 19:59:56
 </td>
 </tr>
 <tr>
@@ -599,7 +598,7 @@ recent_post_created_on
 26
 </td>
 <td style="text-align:left;">
-2021-01-29 04:29:06
+2018-12-15 09:17:15
 </td>
 </tr>
 <tr>
@@ -607,7 +606,7 @@ recent_post_created_on
 27
 </td>
 <td style="text-align:left;">
-2019-04-01 14:27:40
+2021-01-18 20:51:25
 </td>
 </tr>
 <tr>
@@ -615,7 +614,7 @@ recent_post_created_on
 28
 </td>
 <td style="text-align:left;">
-2019-06-12 04:04:43
+2018-06-27 18:35:23
 </td>
 </tr>
 <tr>
@@ -623,7 +622,7 @@ recent_post_created_on
 29
 </td>
 <td style="text-align:left;">
-2020-09-13 18:16:01
+2019-04-24 17:51:07
 </td>
 </tr>
 <tr>
@@ -631,7 +630,7 @@ recent_post_created_on
 30
 </td>
 <td style="text-align:left;">
-2021-02-25 16:05:17
+2020-11-07 01:02:35
 </td>
 </tr>
 <tr>
@@ -639,7 +638,7 @@ recent_post_created_on
 31
 </td>
 <td style="text-align:left;">
-2018-11-17 23:38:50
+2020-12-18 16:45:45
 </td>
 </tr>
 <tr>
@@ -647,7 +646,7 @@ recent_post_created_on
 32
 </td>
 <td style="text-align:left;">
-2019-05-16 10:19:07
+2018-01-22 13:51:55
 </td>
 </tr>
 <tr>
@@ -655,15 +654,7 @@ recent_post_created_on
 33
 </td>
 <td style="text-align:left;">
-2021-04-22 06:30:44
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-34
-</td>
-<td style="text-align:left;">
-2019-05-14 00:17:23
+2019-05-25 12:05:45
 </td>
 </tr>
 <tr>
@@ -671,7 +662,7 @@ recent_post_created_on
 35
 </td>
 <td style="text-align:left;">
-2018-04-07 14:27:09
+2020-11-17 07:14:36
 </td>
 </tr>
 <tr>
@@ -679,7 +670,15 @@ recent_post_created_on
 36
 </td>
 <td style="text-align:left;">
-2015-02-13 18:42:35
+2018-07-15 14:57:21
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+37
+</td>
+<td style="text-align:left;">
+2021-01-17 05:45:58
 </td>
 </tr>
 <tr>
@@ -687,7 +686,7 @@ recent_post_created_on
 38
 </td>
 <td style="text-align:left;">
-2019-04-16 02:22:26
+2017-05-31 17:51:52
 </td>
 </tr>
 <tr>
@@ -695,23 +694,7 @@ recent_post_created_on
 39
 </td>
 <td style="text-align:left;">
-2019-05-09 18:25:28
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-40
-</td>
-<td style="text-align:left;">
-2021-02-02 07:14:08
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-41
-</td>
-<td style="text-align:left;">
-2020-01-04 02:34:07
+2021-01-08 16:43:50
 </td>
 </tr>
 <tr>
@@ -719,7 +702,7 @@ recent_post_created_on
 42
 </td>
 <td style="text-align:left;">
-2014-10-13 17:24:57
+2019-07-12 14:07:12
 </td>
 </tr>
 <tr>
@@ -727,7 +710,7 @@ recent_post_created_on
 43
 </td>
 <td style="text-align:left;">
-2020-07-28 06:09:50
+2016-11-17 14:14:25
 </td>
 </tr>
 <tr>
@@ -735,15 +718,7 @@ recent_post_created_on
 44
 </td>
 <td style="text-align:left;">
-2017-10-25 22:55:57
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-45
-</td>
-<td style="text-align:left;">
-2020-09-19 19:24:55
+2020-12-18 00:50:28
 </td>
 </tr>
 <tr>
@@ -751,15 +726,31 @@ recent_post_created_on
 48
 </td>
 <td style="text-align:left;">
-2021-01-31 04:05:12
+2016-10-19 17:27:38
 </td>
 </tr>
 <tr>
 <td style="text-align:right;">
-52
+49
 </td>
 <td style="text-align:left;">
-2018-12-10 14:55:17
+2018-11-20 07:15:21
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:left;">
+2019-05-27 08:08:51
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:left;">
+2018-10-31 12:58:56
 </td>
 </tr>
 <tr>
@@ -767,15 +758,7 @@ recent_post_created_on
 53
 </td>
 <td style="text-align:left;">
-2014-10-07 19:49:50
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-54
-</td>
-<td style="text-align:left;">
-2020-09-13 05:44:17
+2013-04-01 15:43:33
 </td>
 </tr>
 <tr>
@@ -783,15 +766,23 @@ recent_post_created_on
 55
 </td>
 <td style="text-align:left;">
-2018-11-21 02:40:37
+2019-10-06 02:58:44
 </td>
 </tr>
 <tr>
 <td style="text-align:right;">
-57
+56
 </td>
 <td style="text-align:left;">
-2020-07-26 11:29:17
+2017-04-01 19:54:09
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+59
+</td>
+<td style="text-align:left;">
+2021-04-29 03:57:50
 </td>
 </tr>
 <tr>
@@ -799,7 +790,7 @@ recent_post_created_on
 60
 </td>
 <td style="text-align:left;">
-2016-11-09 11:38:21
+2018-10-17 18:11:11
 </td>
 </tr>
 <tr>
@@ -807,7 +798,7 @@ recent_post_created_on
 61
 </td>
 <td style="text-align:left;">
-2018-09-12 16:53:19
+2019-05-07 23:09:03
 </td>
 </tr>
 <tr>
@@ -815,7 +806,7 @@ recent_post_created_on
 62
 </td>
 <td style="text-align:left;">
-2017-01-08 11:16:34
+2020-11-24 00:56:45
 </td>
 </tr>
 <tr>
@@ -823,191 +814,103 @@ recent_post_created_on
 63
 </td>
 <td style="text-align:left;">
-2016-12-06 14:41:38
+2016-11-16 17:15:46
 </td>
 </tr>
 <tr>
 <td style="text-align:right;">
-64
+69
 </td>
 <td style="text-align:left;">
-2015-08-28 14:14:05
+2018-01-03 21:45:55
 </td>
 </tr>
 <tr>
 <td style="text-align:right;">
-65
+76
 </td>
 <td style="text-align:left;">
-2020-07-18 21:36:16
+2017-03-27 03:16:51
 </td>
 </tr>
 <tr>
 <td style="text-align:right;">
-66
+86
 </td>
 <td style="text-align:left;">
-2019-05-24 13:36:04
+2019-05-26 17:18:42
 </td>
 </tr>
 <tr>
 <td style="text-align:right;">
-70
+104
 </td>
 <td style="text-align:left;">
-2018-10-02 21:10:34
+2019-03-30 17:09:30
 </td>
 </tr>
 <tr>
 <td style="text-align:right;">
-71
+113
 </td>
 <td style="text-align:left;">
-2021-04-24 20:24:29
+2019-06-24 03:34:57
 </td>
 </tr>
 <tr>
 <td style="text-align:right;">
-72
+117
 </td>
 <td style="text-align:left;">
-2017-12-01 22:19:29
+2021-01-15 18:37:59
 </td>
 </tr>
 <tr>
 <td style="text-align:right;">
-74
+137
 </td>
 <td style="text-align:left;">
-2017-04-15 20:46:56
+2019-07-07 17:16:46
 </td>
 </tr>
 <tr>
 <td style="text-align:right;">
-77
+182
 </td>
 <td style="text-align:left;">
-2021-02-26 18:33:34
+2017-10-10 16:32:06
 </td>
 </tr>
 <tr>
 <td style="text-align:right;">
-83
+193
 </td>
 <td style="text-align:left;">
-2016-08-31 20:54:49
+2018-12-15 21:38:45
 </td>
 </tr>
 <tr>
 <td style="text-align:right;">
-87
+197
 </td>
 <td style="text-align:left;">
-2020-01-03 23:51:17
+2020-07-22 11:27:07
 </td>
 </tr>
 <tr>
 <td style="text-align:right;">
-98
+211
 </td>
 <td style="text-align:left;">
-2019-04-05 16:37:34
+2019-01-28 18:22:43
 </td>
 </tr>
 <tr>
 <td style="text-align:right;">
-106
+241
 </td>
 <td style="text-align:left;">
-2016-01-13 16:38:21
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-111
-</td>
-<td style="text-align:left;">
-2020-09-16 20:26:21
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-121
-</td>
-<td style="text-align:left;">
-2020-07-21 13:31:07
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-122
-</td>
-<td style="text-align:left;">
-2018-12-06 15:00:04
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-136
-</td>
-<td style="text-align:left;">
-2019-06-03 20:41:15
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-143
-</td>
-<td style="text-align:left;">
-2019-01-31 04:22:42
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-160
-</td>
-<td style="text-align:left;">
-2018-12-04 14:26:04
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-161
-</td>
-<td style="text-align:left;">
-2019-01-27 23:38:43
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-186
-</td>
-<td style="text-align:left;">
-2019-01-28 01:03:55
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-203
-</td>
-<td style="text-align:left;">
-2019-07-18 12:10:17
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-251
-</td>
-<td style="text-align:left;">
-2018-04-28 21:27:22
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-270
-</td>
-<td style="text-align:left;">
-2020-09-30 02:07:04
+2021-01-23 14:06:27
 </td>
 </tr>
 <tr>
@@ -1015,15 +918,15 @@ recent_post_created_on
 276
 </td>
 <td style="text-align:left;">
-2020-09-14 03:27:03
+2020-09-15 18:57:03
 </td>
 </tr>
 <tr>
 <td style="text-align:right;">
-342
+2034
 </td>
 <td style="text-align:left;">
-2019-05-22 19:30:17
+2020-09-16 06:01:18
 </td>
 </tr>
 </tbody>
@@ -1037,8 +940,13 @@ print(terms_chart)</code></pre>
 </div>
 <div id="chart-2" class="section level1">
 <h1>Chart 2</h1>
-<pre class="r"><code>source(&quot;../source/Group_Chart_AG.R&quot;)
-print(terms_graph)</code></pre>
+<pre class="r"><code>source(&quot;../source/Group_Chart_AG.R&quot;)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;data.table&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:dplyr&#39;:
+## 
+##     between, first, last</code></pre>
+<pre class="r"><code>print(terms_graph)</code></pre>
 <p><img src="data:image/png;base64,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" width="672" /></p>
 </div>
 
