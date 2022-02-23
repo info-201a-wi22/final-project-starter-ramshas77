@@ -44,3 +44,5 @@ display_chart2 <- function(adhd_data) {
       geom_point(color = "red")
     return(terms_graph)
 }
+
+do find_term multiple times to retrun a number and then put that number into the "frequency" vector instead of harcoding. 
