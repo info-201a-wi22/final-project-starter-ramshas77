@@ -1,9 +1,4 @@
-# for naomi's chart - the number of times certain keywords appear in posts. 
-
-library(dplyr)
-library(stringr)
-library(ggplot2)
-library(plotly)
+# the work for Chart #1, finding how often certain keywords appear in the selftexts of the posts with the most comments
 
 ## To visualize the graph, load the data
 adhd_data <- read.csv("../data/ADHD.csv")

@@ -13,7 +13,6 @@ library(ggplot2)
 ```
 
 
-
 ## Audience
 
 Anyone who wants to support someone with ADHD, including but not limited to medical providers, academics, and friends/loved ones. 
