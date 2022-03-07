@@ -6,9 +6,6 @@ adhd_data <- read.csv("../data/ADHD.csv")
 
 ## If these codes are for the graph, make sure they're inside of the function
 # max_comments <- max(adhd_data$num_comments, na.rm = TRUE)
-# 
-
-
 
 ## this is the chart function. Everything should be within this function. 
 display_chart1 <- function(adhd_data) {

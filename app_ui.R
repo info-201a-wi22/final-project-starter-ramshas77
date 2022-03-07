@@ -1,6 +1,7 @@
 # this will be our UI. 
 # Ynow, the one that has the Fluidpage(), sidebarPanel(), etc stuff. 
 library(shiny)
+library(ggplot2)
 library(plotly)
 source("app_server.R")
 
@@ -18,7 +19,7 @@ score_input <- sliderInput(
 intro_panel <- tabPanel(
   titlePanel("Introduction"),
   h1("Overview"),
-  p("with recent talk about psychiatry and mental disorders in the media, which
+  p("With recent talk about psychiatry and mental disorders in the media, which
   possibly misrepresents mental illness(1), we decided to do some research
   into Attention Deficit Hyperactivity
     disorder - also known as ADHD. With diagnosis rates on the rise, 
@@ -36,9 +37,10 @@ intro_panel <- tabPanel(
   h2("Relevant Links"),
   p("1. https://health.usnews.com/health-news/health-wellness/articles/2015/04/16/how-mental-illness-is-misrepresented-in-the-media"),
   p("2. https://www.cdc.gov/ncbddd/adhd/data.html")
-  # note: i found a tutorial on how to hyperlink 
-  # https://stackoverflow.com/questions/42047422/create-url-hyperlink-in-r-shiny
 )
+    # note: i found a tutorial on how to hyperlink 
+  # https://stackoverflow.com/questions/42047422/create-url-hyperlink-in-r-shiny
+
 
 visualization_1 <- tabPanel(
   titlePanel("Visualization 1"),
@@ -64,11 +66,27 @@ visualization_1 <- tabPanel(
   their popularity/importance in that way. A deeper dive into the body of
   the posts in this sample, as well as several different samples may be done 
   for more insight.")
-  
+)
+
+chart1_panel <- tabPanel(
+  titlePanel("Chart 1"),
+  plotlyOutput("chart1"), # the chart isnt appearing >:(
+  p("This chart compares the frequencies of a variety of ADHD-related keywords.
+    The main texts of the 101 posts with the most number of comments in the Reddit
+    thread 'ADHD' have been sorted based on whether or not they contain a specific 
+    ADHD-related word such as 'symptoms' or 'focus', and the number of posts 
+    with that word have been tallied. Through this display of the data, we can see how popular certain keywords 
+    are within the ADHD community. We can see that like 'help' and 'medication' 
+    appeared the most with around twenty occurrences, whereas posts containing 
+    words like 'plan' and 'doctor' are less popular, as only about 10 of the most
+    popular posts contained those terms. This can tell us that posts where people
+    talk about their struggles, perhaps with things such as medication or focusing,
+    are popular among others on the ADHD Reddit thread and garner many comments.")
 )
 
 ui <- navbarPage(
   "Analyzing Online ADHD communities",
   intro_panel, 
-  visualization_1
+  visualization_1,
+  chart1_panel
 )
