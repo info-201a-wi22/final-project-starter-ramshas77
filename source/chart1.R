@@ -16,32 +16,12 @@ display_chart1 <- function(adhd_data) {
   find_word <- top_101 %>%
     filter(str_detect(.$selftext, "today"))
   variable <- nrow(find_word)
-  term <- c('help', 
-            'medication', 
-            'focus', 
-            'hard', 
-            'struggle', 
-            'forget', 
-            'adhd', 
-            'sleep', 
-            'doctor', 
-            'diagnose', 
-            'plan', 
-            'symptoms'
+  term <- c('help', 'medication', 'focus', 'hard', 'struggle', 'forget', 'adhd', 
+            'sleep', 'doctor', 'diagnose', 'plan', 'symptoms'
   )
   
-  frequency <- c(20, 
-                 16, 
-                 16, 
-                 15, 
-                 14, 
-                 12, 
-                 11, 
-                 11, 
-                 10, 
-                 9,
-                 9, 
-                 7
+  frequency <- c(20, 16, 16, 15, 14, 12, 11, 
+                 11, 10, 9, 9, 7
   )
   
   term_frequencies <- data.frame(term, frequency) 
