@@ -3,7 +3,6 @@
 ## To visualize the graph, load the data
 adhd_data <- read.csv("../data/ADHD.csv")
 
-
 ## If these codes are for the graph, make sure they're inside of the function
 # max_comments <- max(adhd_data$num_comments, na.rm = TRUE)
 
@@ -14,7 +13,7 @@ display_chart1 <- function(adhd_data) {
     filter(num_comments > 421)
   
   find_word <- top_101 %>%
-    filter(str_detect(.$selftext, "today"))
+    filter(str_detect(.$selftext, "doctor"))
   variable <- nrow(find_word)
   term <- c('help', 'medication', 'focus', 'hard', 'struggle', 'forget', 'adhd', 
             'sleep', 'doctor', 'diagnose', 'plan', 'symptoms'
