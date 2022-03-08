@@ -68,8 +68,44 @@ visualization_1 <- tabPanel(
   for more insight.")
 )
 
+term1 <- sidebarPanel(
+  selectInput(
+    "term1",
+    label = "Pick the first term:",
+    choices = term
+  )
+)
+
+term2 <- sidebarPanel(
+  selectInput(
+    "term2",
+    label = "Pick the second term:",
+    choices = term
+  )
+)
+
+term3 <- sidebarPanel(
+  selectInput(
+    "term3",
+    label = "Pick the third term:",
+    choices = term
+  )
+)
+
+term4 <- sidebarPanel(
+  selectInput(
+    "term4",
+    label = "Pick the fourth term:",
+    choices = term
+  )
+)
+
 chart1_panel <- tabPanel(
   titlePanel("Chart 1"),
+  term1,
+  term2,
+  term3,
+  term4,
   plotlyOutput("chart1"), # the chart isnt appearing >:(
   p("This chart compares the frequencies of a variety of ADHD-related keywords.
     The main texts of the 101 posts with the most number of comments in the Reddit

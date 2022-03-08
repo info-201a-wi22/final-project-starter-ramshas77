@@ -80,55 +80,40 @@ server <- function(input, output) {
     )
   })
   
+  output$chart2 <- renderPlotly({
   
-output$chart2 <- renderPlotly({
+    sample_data <- sample_n(adhd_data, 10000)
   
-  sample_data <- sample_n(adhd_data, 10000)
+    find_term_dh <- sample_data %>% 
+      filter(str_count(title, 'doctor|help') == 2)
   
-  find_term_dh <- sample_data %>% 
-    filter(str_count(title, 'doctor|help') == 2)
+    variable_dh <- sample_data %>% 
+      nrow(find_terms_dh)
   
-  variable_dh <- sample_data %>% 
-    nrow(find_terms_dh)
+    find_term_ph <- sample_data %>% 
+      filter(str_count(title, 'parent|help') == 2)
   
+    variable_ph <- nrow(find_term_ph)
   
-  find_term_ph <- sample_data %>% 
-    filter(str_count(title, 'parent|help') == 2)
+    find_term_th <- sample_data %>% 
+      filter(str_count(title, 'teacher|help') == 2)
   
-  variable_ph <- nrow(find_term_ph)
+    variable_th <- nrow(find_term_th)
   
+    terms <- c("doctor/help", "parent/help", "teacher/help")
+    frequency <- c(variable_dh, variable_ph, variable_th)
   
-  find_term_th <- sample_data %>% 
-    filter(str_count(title, 'teacher|help') == 2)
+    term_freq <- data.frame(terms, frequency)
   
-  variable_th <- nrow(find_term_th)
-  
-  terms <- c("doctor/help", "parent/help", "teacher/help")
-  frequency <- c(variable_dh, variable_ph, variable_th)
-  
-  term_freq <- data.frame(terms, frequency)
-  
-  terms_graph <- ggplot(term_freq, aes(terms, frequency)) + 
-    geom_point(position = "stack", stat = "identity", shape = 18, color = "blue") +
-    ggtitle("Frequency of Combined Terms" , subtitle = "from the first 10000 values of the data set") 
-  
-  plotly_chart2 <- plot_ly(
-    x = terms,
-    y = frequency,
-    name = 'Frequency of Combined Terms',
-    type = 'Point'
+    terms_graph <- ggplot(term_freq, aes(terms, frequency)) + 
+      geom_point(position = "stack", stat = "identity", shape = 18, color = "blue") +
+      ggtitle("Frequency of Combined Terms" , subtitle = "from the first 10000 values of the data set") 
     
-    
-  )
-  
-}
-  
-  
-  
-)
-
-  
-  
-  
-  
+    plotly_chart2 <- plot_ly(
+      x = terms,
+      y = frequency,
+      name = 'Frequency of Combined Terms',
+      type = 'Point'
+    )
+  })
 }
