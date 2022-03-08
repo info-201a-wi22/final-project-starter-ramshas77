@@ -72,8 +72,10 @@ server <- function(input, output) {
     terms_chart <- ggplot(data = term_frequencies) +
       geom_col( mapping = aes(x = term, y = frequency))
     
+    term_list <- c(term1, term2, term3, term4)
+    
     plotly_chart1 <- plot_ly(
-      x = term,
+      x = term_list,
       y = frequency,
       name = "Term Frequencies",
       type = "bar"
