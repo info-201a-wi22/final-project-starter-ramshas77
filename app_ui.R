@@ -144,11 +144,9 @@ report_page <- tabPanel(
   h3("Conclusion:"),
   p("In summary, even if they are receiving help from medical professionals, many people with ADHD will use resources such as the ADHD Reddit thread in order to receive support and advice from peers. Additionally, ADHD can happen in conjunction with other mental illnesses such as OCD or depression, and as such it is very important that people with ADHD have online spaces to talk with others in order to support themselves as they need."),
   h3("Acknowledgements:"),
-  p(""),
+  p("Thanks to our TA, Min Kim, for helping us throughout this project. We would also like to thank the Reddit users who contributed to the ADHD server and gave us this wonderful data to work with."),
   h3("References:"),
   p("1) 'Reddit User Agreement.' Reddit User Agreement, 2021, https://www.redditinc.com/policies/user-agreement-september-12-2021#:~:text=No%20one%20under%2013%20is,when%20you%20access%20the%20Services (2) 'JerseyNeo'. 'Reddit ADHD Dataset.' Kaggle, 13 May 2021, https://www.kaggle.com/jerseyneo/reddit-adhd-dataset."),
-  h3("Appendices:"),
-  p("")
 )
 
 ui <- navbarPage(

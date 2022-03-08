@@ -33,51 +33,51 @@ server <- function(input, output) {
         font = list(family = "Arial", size = 12, color = c("black"))
       ))
   })
-  
+
   output$chart1 <- renderPlotly({
-      top_101 <- adhd_data %>%
-        select(title, selftext, num_comments) %>%
-        filter(num_comments > 421)
-      
-      find_word <- top_101 %>%
-        filter(str_detect(.$selftext, "today"))
-      variable <- nrow(find_word)
-      term <- c('help', 
-                'medication', 
-                'focus', 
-                'hard', 
-                'struggle', 
-                'forget', 
-                'adhd', 
-                'sleep', 
-                'doctor', 
-                'diagnose', 
-                'plan', 
-                'symptoms'
-      )
-      frequency <- c(20, 
-                     16, 
-                     16, 
-                     15, 
-                     14, 
-                     12, 
-                     11, 
-                     11, 
-                     10, 
-                     9,
-                     9, 
-                     7
-      )
-      term_frequencies <- data.frame(term, frequency) 
-      terms_chart <- ggplot(data = term_frequencies) +
-        geom_col( mapping = aes(x = term, y = frequency))
-      
-      plotly_chart1 <- plot_ly(
-        x = term,
-        y = frequency,
-        name = "Term Frequencies",
-        type = "bar"
-      )
+    top_101 <- adhd_data %>%
+      select(title, selftext, num_comments) %>%
+      filter(num_comments > 421)
+    
+    find_word <- top_101 %>%
+      filter(str_detect(.$selftext, "today"))
+    variable <- nrow(find_word)
+    term <- c('help', 
+              'medication', 
+              'focus', 
+              'hard', 
+              'struggle', 
+              'forget', 
+              'adhd', 
+              'sleep', 
+              'doctor', 
+              'diagnose', 
+              'plan', 
+              'symptoms'
+    )
+    frequency <- c(20, 
+                   16, 
+                   16, 
+                   15, 
+                   14, 
+                   12, 
+                   11, 
+                   11, 
+                   10, 
+                   9,
+                   9, 
+                   7
+    )
+    term_frequencies <- data.frame(term, frequency) 
+    terms_chart <- ggplot(data = term_frequencies) +
+      geom_col( mapping = aes(x = term, y = frequency))
+
+    plotly_chart1 <- plot_ly(
+      x = term,
+      y = fequency,
+      name = "Term Frequencies",
+      type = "bar"
+    )
   })
 }
 
