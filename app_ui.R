@@ -94,6 +94,8 @@ report_page <- tabPanel(
   p("INFO-201: Technical Foundations of Informatics - The Information School - University of Washington"),
   h3("Date:"),
   p("Winter 2022"),
+  h3("Abstract:"),
+  p("Our main question is what the main concerns of the ADHD community are. We are concerned that people with ADHD may not accurately share their experiences with professionals out of fear of judgment or involuntary hospitalization, and so we are analyzing a more anonymous source of information-the ADHD thread in Reddit-for more information."),
   h3("Keywords:"),
   p("ADHD, Mental Health, Peer-to-peer Support, Symptoms"),
   h3("Introduction:"),
@@ -140,7 +142,13 @@ report_page <- tabPanel(
   p("Next, we discovered that within the first 10,000 posts the two most common words related to getting help from people of personal influence are 'help' and 'doctor.' The common use of the word doctor shows that many people with ADHD see medical professionals. 'Doctor' appears 143 times while words like 'parent' and 'teacher' only appear 109 and 13 times respectively, which shows that people with ADHD are likely more willing to seek out help from a professional who knows about physical and mental health than an individual within their personal lives."),
   p("Lastly, we learned that there are 430 posts whose titles contain the keyword 'medication' and only 3 posts whose titles contain the word 'guidance.' This clearly shows that medication is a much more common topic in the ADHD Reddit thread than getting guidance. This could be because people are less likely to ask for advice on personal topics compared to more surface-level things such as medications. These statistics are all important to know because they show us how often people use various resources like other people online, doctors, or mentor figures, and help us understand the general wants and needs of people with ADHD."),
   h3("Conclusion:"),
-  p("In summary, even if they are receiving help from medical professionals, many people with ADHD will use resources such as the ADHD Reddit thread in order to receive support and advice from peers. Additionally, ADHD can happen in conjunction with other mental illnesses such as OCD or depression, and as such it is very important that people with ADHD have online spaces to talk with others in order to support themselves as they need.")
+  p("In summary, even if they are receiving help from medical professionals, many people with ADHD will use resources such as the ADHD Reddit thread in order to receive support and advice from peers. Additionally, ADHD can happen in conjunction with other mental illnesses such as OCD or depression, and as such it is very important that people with ADHD have online spaces to talk with others in order to support themselves as they need."),
+  h3("Acknowledgements:"),
+  p(""),
+  h3("References:"),
+  p("1) 'Reddit User Agreement.' Reddit User Agreement, 2021, https://www.redditinc.com/policies/user-agreement-september-12-2021#:~:text=No%20one%20under%2013%20is,when%20you%20access%20the%20Services (2) 'JerseyNeo'. 'Reddit ADHD Dataset.' Kaggle, 13 May 2021, https://www.kaggle.com/jerseyneo/reddit-adhd-dataset."),
+  h3("Appendices:"),
+  p("")
 )
 
 ui <- navbarPage(
