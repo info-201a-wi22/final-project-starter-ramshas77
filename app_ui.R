@@ -70,7 +70,7 @@ visualization_1 <- tabPanel(
 
 chart1_panel <- tabPanel(
   titlePanel("Chart 1"),
-  plotlyOutput("chart1"), # the chart isnt appearing >:(
+  plotOutput("chart1"), # the chart isnt appearing >:(
   p("This chart compares the frequencies of a variety of ADHD-related keywords.
     The main texts of the 101 posts with the most number of comments in the Reddit
     thread 'ADHD' have been sorted based on whether or not they contain a specific 
@@ -101,18 +101,18 @@ report_page <- tabPanel(
   h3("Introduction:"),
   p("This question is important because it's important to understand their need for medication, correct diagnoses. To address this concern, we plan to use a data set from Reddit, a site where we can reasonably expect people from this community to be open and honest because there are minimal consequences. Therefore, our analysis is not intended to be a monolith, it is simply to fill in 'missing' data about that people may not share with professionals."),
   h3("Design Situation:"),
-  p("Goal:"),
-  h4("To use data from a community resource to better understand the needs of ADHD patients."),
-  p("Human values:"),
-  h4("Compassionate care, holistic health(care), correct diagnoses, initiative to provide mental support, attentive listening to patients."),
-  p("Data Sources:"),
-  h4("Kaggle.com, Reddit.com"),
-  p("Direct Stakeholders:"),
-  h4("Institutions such as doctor's offices, hospitals, psychiatric firms, pharmaceutical companies that are directly treating patients with ADHD, as well as educational institutions and workplaces that may be making accommodations for these individuals."),
-  p("Indirect Stakeholders:"),
-  h4("people with ADHD who need support, medication, mental health care, or any combination of the 3."),
-  p("Benefits and Harms:"),
-  h4("One harm could be that this data displays a mix of fact and opinion, and there is no judgement of honesty or bias. One major benefit would be that with the right coding, someone can use this data to categorize information to derive several useful concepts from the data. Examining the data in different ways like this could possibly lead to someone coming up with solutions for the problems experienced by the ADHD community. It provides representation, and can provide the direct stakeholders information about ADHD, with a reasonable expectation of user-to-stakeholder confidentiality."),
+  h4("Goal:"),
+  p("To use data from a community resource to better understand the needs of ADHD patients."),
+  h4("Human values:"),
+  p("Compassionate care, holistic health(care), correct diagnoses, initiative to provide mental support, attentive listening to patients."),
+  h4("Data Sources:"),
+  p("Kaggle.com, Reddit.com"),
+  h4("Direct Stakeholders:"),
+  p("Institutions such as doctor's offices, hospitals, psychiatric firms, pharmaceutical companies that are directly treating patients with ADHD, as well as educational institutions and workplaces that may be making accommodations for these individuals."),
+  h4("Indirect Stakeholders:"),
+  p("people with ADHD who need support, medication, mental health care, or any combination of the 3."),
+  h4("Benefits and Harms:"),
+  p("One harm could be that this data displays a mix of fact and opinion, and there is no judgement of honesty or bias. One major benefit would be that with the right coding, someone can use this data to categorize information to derive several useful concepts from the data. Examining the data in different ways like this could possibly lead to someone coming up with solutions for the problems experienced by the ADHD community. It provides representation, and can provide the direct stakeholders information about ADHD, with a reasonable expectation of user-to-stakeholder confidentiality."),
   h3("Research questions:"),
   h4("(1) Amongst posts that have the most comments, what are the most common words or phrases mentioned?"),
   p("This question is motivated by our interest in what topics are the most popular within the two Reddit threads. This is important because it's likely that people with ADHD are most often frequenting and interacting with posts on the Reddit threads contained within our datasets. We believe that it is important to understand what topics are the most popular because that gives us insight into the most relatable and therefore widespread experiences amongst the ADHD community. We will address this question by sorting the data by most comments and highest score, and then detecting common words and strings that appear within the posts."),
