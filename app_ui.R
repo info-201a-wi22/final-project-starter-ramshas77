@@ -38,8 +38,8 @@ intro_panel <- tabPanel(
   p("1. https://health.usnews.com/health-news/health-wellness/articles/2015/04/16/how-mental-illness-is-misrepresented-in-the-media"),
   p("2. https://www.cdc.gov/ncbddd/adhd/data.html")
 )
-    # note: i found a tutorial on how to hyperlink 
-  # https://stackoverflow.com/questions/42047422/create-url-hyperlink-in-r-shiny
+# note: i found a tutorial on how to hyperlink 
+# https://stackoverflow.com/questions/42047422/create-url-hyperlink-in-r-shiny
 
 
 visualization_1 <- tabPanel(
@@ -70,7 +70,7 @@ visualization_1 <- tabPanel(
 
 chart1_panel <- tabPanel(
   titlePanel("Chart 1"),
-  plotOutput("chart1"), # the chart isnt appearing >:(
+  plotlyOutput("chart1"), # the chart isnt appearing >:(
   p("This chart compares the frequencies of a variety of ADHD-related keywords.
     The main texts of the 101 posts with the most number of comments in the Reddit
     thread 'ADHD' have been sorted based on whether or not they contain a specific 
@@ -94,25 +94,23 @@ report_page <- tabPanel(
   p("INFO-201: Technical Foundations of Informatics - The Information School - University of Washington"),
   h3("Date:"),
   p("Winter 2022"),
-  h3("Abstract:"),
-  p("Our main question is what the main concerns of the ADHD community are. We are concerned that people with ADHD may not accurately share their experiences with professionals out of fear of judgment or involuntary hospitalization, and so we are analyzing a more anonymous source of information-the ADHD thread in Reddit-for more information."),
   h3("Keywords:"),
   p("ADHD, Mental Health, Peer-to-peer Support, Symptoms"),
   h3("Introduction:"),
   p("This question is important because it's important to understand their need for medication, correct diagnoses. To address this concern, we plan to use a data set from Reddit, a site where we can reasonably expect people from this community to be open and honest because there are minimal consequences. Therefore, our analysis is not intended to be a monolith, it is simply to fill in 'missing' data about that people may not share with professionals."),
   h3("Design Situation:"),
-  h4("Goal:"),
-  p("To use data from a community resource to better understand the needs of ADHD patients."),
-  h4("Human values:"),
-  p("Compassionate care, holistic health(care), correct diagnoses, initiative to provide mental support, attentive listening to patients."),
-  h4("Data Sources:"),
-  p("Kaggle.com, Reddit.com"),
-  h4("Direct Stakeholders:"),
-  p("Institutions such as doctor's offices, hospitals, psychiatric firms, pharmaceutical companies that are directly treating patients with ADHD, as well as educational institutions and workplaces that may be making accommodations for these individuals."),
-  h4("Indirect Stakeholders:"),
-  p("people with ADHD who need support, medication, mental health care, or any combination of the 3."),
-  h4("Benefits and Harms:"),
-  p("One harm could be that this data displays a mix of fact and opinion, and there is no judgement of honesty or bias. One major benefit would be that with the right coding, someone can use this data to categorize information to derive several useful concepts from the data. Examining the data in different ways like this could possibly lead to someone coming up with solutions for the problems experienced by the ADHD community. It provides representation, and can provide the direct stakeholders information about ADHD, with a reasonable expectation of user-to-stakeholder confidentiality."),
+  p("Goal:"),
+  h4("To use data from a community resource to better understand the needs of ADHD patients."),
+  p("Human values:"),
+  h4("Compassionate care, holistic health(care), correct diagnoses, initiative to provide mental support, attentive listening to patients."),
+  p("Data Sources:"),
+  h4("Kaggle.com, Reddit.com"),
+  p("Direct Stakeholders:"),
+  h4("Institutions such as doctor's offices, hospitals, psychiatric firms, pharmaceutical companies that are directly treating patients with ADHD, as well as educational institutions and workplaces that may be making accommodations for these individuals."),
+  p("Indirect Stakeholders:"),
+  h4("people with ADHD who need support, medication, mental health care, or any combination of the 3."),
+  p("Benefits and Harms:"),
+  h4("One harm could be that this data displays a mix of fact and opinion, and there is no judgement of honesty or bias. One major benefit would be that with the right coding, someone can use this data to categorize information to derive several useful concepts from the data. Examining the data in different ways like this could possibly lead to someone coming up with solutions for the problems experienced by the ADHD community. It provides representation, and can provide the direct stakeholders information about ADHD, with a reasonable expectation of user-to-stakeholder confidentiality."),
   h3("Research questions:"),
   h4("(1) Amongst posts that have the most comments, what are the most common words or phrases mentioned?"),
   p("This question is motivated by our interest in what topics are the most popular within the two Reddit threads. This is important because it's likely that people with ADHD are most often frequenting and interacting with posts on the Reddit threads contained within our datasets. We believe that it is important to understand what topics are the most popular because that gives us insight into the most relatable and therefore widespread experiences amongst the ADHD community. We will address this question by sorting the data by most comments and highest score, and then detecting common words and strings that appear within the posts."),
@@ -135,24 +133,46 @@ report_page <- tabPanel(
   p("Our first research question was: Amongst posts that have the most comments, what are the most common words or phrases mentioned? To answer this, we sorted the posts in the ADHD Reddit thread by the number of comments on each post, and selected the 101 posts with the most comments to examine. We then sorted said posts on whether or not they contained keywords of our own choosing. We found that the most commonly mentioned word, included in 20 different posts (??? of the dataset we were working with), was the word 'help.' Amongst the other words we searched for, we found that the words 'medication' and 'focus' are tied for second with 16 posts each."),
   p("Our second research question was: At what frequency does this community mention ADHD in conjunction with other mental illnesses such as 'depression' and 'OCD?' To find the answer to this question, we sorted the data based on whether or not the word 'depression' appears in the main text of the post. We counted up the number of posts for which this was true and then did the same for OCD. We found that the term 'depression' appeared throughout the dataset 79,340 times while the word 'OCD' appears only 11,832 times."),
   p("Our third research question was: How often are words related to medical professionals or other people with an influence on someone's personal life mentioned within the titles of the first 10,000 posts in the ADHD Reddit thread? First, we sorted the dataset to find the first 10,000 posts and then sorted that new dataset to find the number of times various keywords such as 'help,' 'doctor,' 'parent,' 'teacher,' and 'desperate' appeared within the dataset. We discovered that the word 'help' appears most frequently, occurring in 440 posts. The next most common word is 'doctor,' with 143 posts, and the least commonly used word of the group is 'desperate,' with only 9 instances."),
-	p("Our fourth research question was: How often are posts related to getting social or medical help made in the ADHD Reddit thread? To answer this question, we sorted the dataset to find posts with titles containing the words 'medication' or 'guidance.' We found that while the word 'medication' appears in the title of 430 posts, the word 'guidance' only appears in the title of 3 posts."),
+  p("Our fourth research question was: How often are posts related to getting social or medical help made in the ADHD Reddit thread? To answer this question, we sorted the dataset to find posts with titles containing the words 'medication' or 'guidance.' We found that while the word 'medication' appears in the title of 430 posts, the word 'guidance' only appears in the title of 3 posts."),
   h3("Discussion:"),
   p("First, we found that amongst the most popular posts, the most common word used was 'help.' This is important because it shows that others with ADHD are likely well-equipped to give advice and support to others who feel similarly to them, and that conferring with peers is a preferred method of getting help for many people with ADHD. This is supported by the next most common words: medication and focus. These keywords suggest that while people do get help from medical professionals, they still want to get more personal advice on day-to-day issues."),
   p("Next, we found that 'depression' and 'OCD' appear in 79,431 and 11,832 posts respectively. This information shows us clearly that depression is a much more frequently discussed topic than OCD. This may be because of a correlation between ADHD and depression as ADHD can cause someone difficulty and may increase someone's likelihood of becoming depressed. However, this could also just be a result of depression being a more common topic of discussion. Due to social awareness, people may be more likely to be diagnosed with depression and therefore more willing to talk about it than OCD."),
   p("Next, we discovered that within the first 10,000 posts the two most common words related to getting help from people of personal influence are 'help' and 'doctor.' The common use of the word doctor shows that many people with ADHD see medical professionals. 'Doctor' appears 143 times while words like 'parent' and 'teacher' only appear 109 and 13 times respectively, which shows that people with ADHD are likely more willing to seek out help from a professional who knows about physical and mental health than an individual within their personal lives."),
   p("Lastly, we learned that there are 430 posts whose titles contain the keyword 'medication' and only 3 posts whose titles contain the word 'guidance.' This clearly shows that medication is a much more common topic in the ADHD Reddit thread than getting guidance. This could be because people are less likely to ask for advice on personal topics compared to more surface-level things such as medications. These statistics are all important to know because they show us how often people use various resources like other people online, doctors, or mentor figures, and help us understand the general wants and needs of people with ADHD."),
   h3("Conclusion:"),
-  p("In summary, even if they are receiving help from medical professionals, many people with ADHD will use resources such as the ADHD Reddit thread in order to receive support and advice from peers. Additionally, ADHD can happen in conjunction with other mental illnesses such as OCD or depression, and as such it is very important that people with ADHD have online spaces to talk with others in order to support themselves as they need."),
-  h3("Acknowledgements:"),
-  p("Thanks to our TA, Min Kim, for helping us throughout this project. We would also like to thank the Reddit users who contributed to the ADHD server and gave us this wonderful data to work with."),
-  h3("References:"),
-  p("1) 'Reddit User Agreement.' Reddit User Agreement, 2021, https://www.redditinc.com/policies/user-agreement-september-12-2021#:~:text=No%20one%20under%2013%20is,when%20you%20access%20the%20Services (2) 'JerseyNeo'. 'Reddit ADHD Dataset.' Kaggle, 13 May 2021, https://www.kaggle.com/jerseyneo/reddit-adhd-dataset."),
+  p("In summary, even if they are receiving help from medical professionals, many people with ADHD will use resources such as the ADHD Reddit thread in order to receive support and advice from peers. Additionally, ADHD can happen in conjunction with other mental illnesses such as OCD or depression, and as such it is very important that people with ADHD have online spaces to talk with others in order to support themselves as they need.")
 )
+
+
+freq_range <- 
+
+match_input <- sliderInput("slider1", label = h3("Slider"), min = 0, 
+                           max = 100, value = 50)
+
+chart_2 <- tabPanel(
+  titlePanel("Chart 2"),
+  plotlyOutput("p"),
+  p("This specific chart tracks the frequency of combined terms within the modified 
+    data frame that we created called 'sample_data', which lists out the first 10000 
+    posts from a reddit thread called 'ADHD'. I decided to sort the responses to view 
+    how many times a specific outlet for care appeared ('doctor', 'parent', 'teacher'), alongside
+    'help'. The primary reason that we decided to include these specific values of the chart 
+    was to determine which resource that people in the thread were more inclined to reach out to, 
+    or even ask questions about. From there, we're able to have a general grasp of how people with 
+    ADHD and are struggling with with interact with resources of care. ")
+  
+  
+)
+  
+
+
+
 
 ui <- navbarPage(
   "Analyzing Online ADHD communities",
   intro_panel, 
   visualization_1,
   chart1_panel,
+  chart_2,
   report_page
 )
