@@ -55,6 +55,7 @@ server <- function(input, output) {
               'plan', 
               'symptoms'
     )
+    
     frequency <- c(20, 
                    16, 
                    16, 
@@ -68,6 +69,7 @@ server <- function(input, output) {
                    9, 
                    7
     )
+    
     term_frequencies <- data.frame(term, frequency) 
     terms_chart <- ggplot(data = term_frequencies) +
       geom_col( mapping = aes(x = term, y = frequency))
