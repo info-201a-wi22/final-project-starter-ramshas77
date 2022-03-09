@@ -1,7 +1,11 @@
-#This will be the app. I think the only thing required here is
+#This will be the app
 
-source("sahil_app_ui.R")
-source("sahil_app_server.R")
+library(dplyr)
+library(shiny)
+library(plotly)
+library(stringr)
+library(ggplot2)
+source("app_server.R")
+source("app_ui.R")
 
-# Running the app
 shinyApp(ui = ui, server = server)

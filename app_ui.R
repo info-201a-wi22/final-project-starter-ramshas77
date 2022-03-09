@@ -1,8 +1,10 @@
 # this will be our UI. 
 # Ynow, the one that has the Fluidpage(), sidebarPanel(), etc stuff. 
+library(dplyr)
 library(shiny)
-library(ggplot2)
 library(plotly)
+library(stringr)
+library(ggplot2)
 source("app_server.R")
 
 score_range <- range(adhd_data$score)
@@ -37,6 +39,7 @@ intro_panel <- tabPanel(
   h2("Relevant Links"),
   p("1. https://health.usnews.com/health-news/health-wellness/articles/2015/04/16/how-mental-illness-is-misrepresented-in-the-media"),
   p("2. https://www.cdc.gov/ncbddd/adhd/data.html")
+  
 )
 # note: i found a tutorial on how to hyperlink 
 # https://stackoverflow.com/questions/42047422/create-url-hyperlink-in-r-shiny
@@ -75,7 +78,6 @@ term1 <- sidebarPanel(
     choices = term
   )
 )
-
 term2 <- sidebarPanel(
   selectInput(
     "term2",
@@ -83,7 +85,6 @@ term2 <- sidebarPanel(
     choices = term
   )
 )
-
 term3 <- sidebarPanel(
   selectInput(
     "term3",
@@ -91,7 +92,6 @@ term3 <- sidebarPanel(
     choices = term
   )
 )
-
 term4 <- sidebarPanel(
   selectInput(
     "term4",
@@ -99,14 +99,30 @@ term4 <- sidebarPanel(
     choices = term
   )
 )
+term5 <- sidebarPanel(
+  selectInput(
+    "term5",
+    label = "Pick the fifth term:",
+    choices = term
+  )
+)
+term6 <- sidebarPanel(
+  selectInput(
+    "term6",
+    label = "Pick the sixth term:",
+    choices = term
+  )
+)
 
 chart1_panel <- tabPanel(
   titlePanel("Chart 1"),
+  plotlyOutput("chart1"),
   term1,
   term2,
   term3,
   term4,
-  plotlyOutput("chart1"), # the chart isnt appearing >:(
+  term5,
+  term6,
   p("This chart compares the frequencies of a variety of ADHD-related keywords.
     The main texts of the 101 posts with the most number of comments in the Reddit
     thread 'ADHD' have been sorted based on whether or not they contain a specific 
@@ -133,20 +149,20 @@ report_page <- tabPanel(
   h3("Keywords:"),
   p("ADHD, Mental Health, Peer-to-peer Support, Symptoms"),
   h3("Introduction:"),
-  p("This question is important because it's important to understand their need for medication, correct diagnoses. To address this concern, we plan to use a data set from Reddit, a site where we can reasonably expect people from this community to be open and honest because there are minimal consequences. Therefore, our analysis is not intended to be a monolith, it is simply to fill in 'missing' data about that people may not share with professionals."),
+  p("We feel that understanding people with ADHD better is important because it's important to understand their need for medication, correct diagnoses. To address this concern, we plan to use a data set from Reddit, a site where we can reasonably expect people from this community to be open and honest because there are minimal consequences. Therefore, our analysis is not intended to be a monolith, it is simply to fill in 'missing' data about that people may not share with professionals."),
   h3("Design Situation:"),
-  p("Goal:"),
-  h4("To use data from a community resource to better understand the needs of ADHD patients."),
-  p("Human values:"),
-  h4("Compassionate care, holistic health(care), correct diagnoses, initiative to provide mental support, attentive listening to patients."),
-  p("Data Sources:"),
-  h4("Kaggle.com, Reddit.com"),
-  p("Direct Stakeholders:"),
-  h4("Institutions such as doctor's offices, hospitals, psychiatric firms, pharmaceutical companies that are directly treating patients with ADHD, as well as educational institutions and workplaces that may be making accommodations for these individuals."),
-  p("Indirect Stakeholders:"),
-  h4("people with ADHD who need support, medication, mental health care, or any combination of the 3."),
-  p("Benefits and Harms:"),
-  h4("One harm could be that this data displays a mix of fact and opinion, and there is no judgement of honesty or bias. One major benefit would be that with the right coding, someone can use this data to categorize information to derive several useful concepts from the data. Examining the data in different ways like this could possibly lead to someone coming up with solutions for the problems experienced by the ADHD community. It provides representation, and can provide the direct stakeholders information about ADHD, with a reasonable expectation of user-to-stakeholder confidentiality."),
+  h4("Goal:"),
+  p("To use data from a community resource to better understand the needs of ADHD patients."),
+  h4("Human values:"),
+  p("Compassionate care, holistic health(care), correct diagnoses, initiative to provide mental support, attentive listening to patients."),
+  h4("Data Sources:"),
+  p("Kaggle.com, Reddit.com"),
+  h4("Direct Stakeholders:"),
+  p("Institutions such as doctor's offices, hospitals, psychiatric firms, pharmaceutical companies that are directly treating patients with ADHD, as well as educational institutions and workplaces that may be making accommodations for these individuals."),
+  h4("Indirect Stakeholders:"),
+  p("people with ADHD who need support, medication, mental health care, or any combination of the 3."),
+  h4("Benefits and Harms:"),
+  p("One harm could be that this data displays a mix of fact and opinion, and there is no judgement of honesty or bias. One major benefit would be that with the right coding, someone can use this data to categorize information to derive several useful concepts from the data. Examining the data in different ways like this could possibly lead to someone coming up with solutions for the problems experienced by the ADHD community. It provides representation, and can provide the direct stakeholders information about ADHD, with a reasonable expectation of user-to-stakeholder confidentiality."),
   h3("Research questions:"),
   h4("(1) Amongst posts that have the most comments, what are the most common words or phrases mentioned?"),
   p("This question is motivated by our interest in what topics are the most popular within the two Reddit threads. This is important because it's likely that people with ADHD are most often frequenting and interacting with posts on the Reddit threads contained within our datasets. We believe that it is important to understand what topics are the most popular because that gives us insight into the most relatable and therefore widespread experiences amongst the ADHD community. We will address this question by sorting the data by most comments and highest score, and then detecting common words and strings that appear within the posts."),
@@ -179,30 +195,78 @@ report_page <- tabPanel(
   p("In summary, even if they are receiving help from medical professionals, many people with ADHD will use resources such as the ADHD Reddit thread in order to receive support and advice from peers. Additionally, ADHD can happen in conjunction with other mental illnesses such as OCD or depression, and as such it is very important that people with ADHD have online spaces to talk with others in order to support themselves as they need.")
 )
 
-
-freq_range <- 
-
 match_input <- sliderInput("slider1", label = h3("Slider"), min = 0, 
                            max = 100, value = 50)
 
+search1 <- textInput(
+  inputId = "search1", 
+  label = "term1",
+  value = "",
+  width = NULL,
+  placeholder = NULL)
+
+search2 <- textInput(
+  inputId = "search2", 
+  label = "term2",
+  value = "",
+  width = NULL,
+  placeholder = NULL)
+
+search3 <- textInput(
+  inputId = "search3", 
+  label = "term3",
+  value = "",
+  width = NULL,
+  placeholder = NULL)
+
 chart_2 <- tabPanel(
   titlePanel("Chart 2"),
-  plotlyOutput("p"),
-  p("This specific chart tracks the frequency of combined terms within the modified 
-    data frame that we created called 'sample_data', which lists out the first 10000 
-    posts from a reddit thread called 'ADHD'. I decided to sort the responses to view 
-    how many times a specific outlet for care appeared ('doctor', 'parent', 'teacher'), alongside
-    'help'. The primary reason that we decided to include these specific values of the chart 
-    was to determine which resource that people in the thread were more inclined to reach out to, 
-    or even ask questions about. From there, we're able to have a general grasp of how people with 
-    ADHD and are struggling with with interact with resources of care. ")
+  search1, 
+  search2, 
+  search3,
+  plotlyOutput("chart_2"),
+  p("    This specific chart tracks the frequency of combined terms 
+    within the modified  data frame that we created called 'sample_data', 
+    which lists out the first 10000 posts from a reddit thread called 'ADHD'. 
+    I decided to sort the responses to view how many times a specific outlet for
+    care appeared, such as 'friend', 'doctor', 'boyfriend/girlfriend', 
+    etc. alongside the term for 'help'. The primary reason that we decided 
+    to include these specific values of the chart  was to determine which 
+    resource that people in the thread were more popular among the ADHD
+    community to talk about and further seek support from. From there, 
+    we're able to have a general grasp of how people with ADHD interact 
+    with resources of care through the functionality of the checkbox widget
+    - it searches the data set for potential string matches for the
+    specific term along with 'help' to determine the general popularity
+    and the relationship between the terms. ")
   
   
 )
+
+
+summary_takeaways <- tabPanel(
+  titlePanel("Summary Takeaways"),
+  h3("Summary Takeaway #1"),
+  p("One specific takeaway that we have had on our project is understanding concerns of the ADHD community 
+    based on our first visualization -- we took the scores of several comments under a subreddit and were able
+    to generalize the popularity and attitude towards specific keywords based on the score."),
+  h3("Summary Takeaway #2"),
+  p("Another specific takeaway that we had on our project is searching for key terms within the data set that 
+  helped us understand which words were popular among the ADHD community. Our findings were that the terms 
+    'help' and 'medication' appeared among the most in the data set. This helped us realize some of the specific 
+    struggles that people are undergoing and how they are tied to those key terms."),
+  h3("Summary Takeaway #3"),
+  p("Finally, another specific takeaway from the project that we had was understanding how frequently a combination
+    of terms appeared within the data set. For this specifically, we were able to combine key community resources such
+    as 'doctor', 'teacher', and 'parent' with the term 'help. The primary reasoning behind this was to get a generalized
+    understanding of which community resource appeared the most alongside with calls for 'help' and understand which
+   resource was mentioned the most in the comment thread.")
   
+)
 
 
-
+# chart_2_checkbox <- checkboxInput("find_term_dh", label = "Doctor & Help", FALSE)
+# verbatimTextOutput("find_term_dh")
 
 ui <- navbarPage(
   "Analyzing Online ADHD communities",
@@ -210,5 +274,6 @@ ui <- navbarPage(
   visualization_1,
   chart1_panel,
   chart_2,
+  summary_takeaways,
   report_page
 )
