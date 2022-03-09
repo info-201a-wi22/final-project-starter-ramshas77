@@ -10,10 +10,16 @@ server <- function(input, output) {
                    11, 11, 10, 9, 9, 7
     )
     
-    term_list <- c(input$term1, input$term2, input$term3, input$term4, input$term5)
+    term_frequencies <- data.frame(term, frequency)
+    term_frequencies <- term_frequencies %>% filter(term == input$term1 |
+                                                    term == input$term2 |
+                                                    term == input$term3 |
+                                                    term == input$term4 |
+                                                    term == input$term5)
     
     plotly_chart1 <- plot_ly(
-      x = term_list,
+      data = term_frequencies,
+      x = term,
       y = frequency,
       name = "Term Frequencies",
       type = "bar"

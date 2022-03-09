@@ -43,6 +43,7 @@ chart1_panel <- tabPanel(
   term3,
   term4,
   term5,
+  p(""),
   plotlyOutput("chart1"),
   p("This chart compares the frequencies of a variety of ADHD-related keywords.
     The main texts of the 101 posts with the most number of comments in the Reddit
@@ -115,8 +116,9 @@ report_page <- tabPanel(
   h3("Conclusion:"),
   p("In summary, even if they are receiving help from medical professionals, many people with ADHD will use resources such as the ADHD Reddit thread in order to receive support and advice from peers. Additionally, ADHD can happen in conjunction with other mental illnesses such as OCD or depression, and as such it is very important that people with ADHD have online spaces to talk with others in order to support themselves as they need.")
 )
+
 ui <- navbarPage(
-  "Analyzing Online ADHD communities",
+  titlePanel("Analyzing Online ADHD communities"),
   chart1_panel,
   report_page
 )
