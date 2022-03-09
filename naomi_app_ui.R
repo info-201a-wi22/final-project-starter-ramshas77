@@ -35,16 +35,23 @@ term5 <- sidebarPanel(
     choices = term
   )
 )
+term6 <- sidebarPanel(
+  selectInput(
+    "term6",
+    label = "Pick the sixth term:",
+    choices = term
+  )
+)
 
 chart1_panel <- tabPanel(
   titlePanel("Chart 1"),
+  plotlyOutput("chart1"),
   term1,
   term2,
   term3,
   term4,
   term5,
-  p(""),
-  plotlyOutput("chart1"),
+  term6,
   p("This chart compares the frequencies of a variety of ADHD-related keywords.
     The main texts of the 101 posts with the most number of comments in the Reddit
     thread 'ADHD' have been sorted based on whether or not they contain a specific 
